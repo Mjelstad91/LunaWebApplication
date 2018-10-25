@@ -1,0 +1,57 @@
+﻿@model Model.Models.User
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body>
+    <div class="container-fluid fill">
+        <div class="container">
+            <div class="mypage">
+                <div class="jumbotron mypage-section">
+                    <h1 class="mypage-header">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
+                </div>
+                <div class="col-xs-12">
+                    <div class="container-fluid mypage-section" style="padding-top: 0">
+                        <div class="col-xs-4 col-xs-offset-4 customer-table">
+                            <form style="text-align: left">
+                                <div class="form-group">
+                                    <label for="firstname">Fornavn</label>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Skriv inn fornavn", @Value = @Html.DisplayFor(model => model.FirstName) } )
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">Etternavn</label>
+                                    
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @id = "lastname", @placeholder = "Skriv inn etternavn", @Value = @Html.DisplayFor(model => model.LastName) })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Skriv inn email", @Value = @Html.DisplayFor(model => model.Email) })
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Adresse</label>
+                                    
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @id = "address", @placeholder = "Skriv inn adresse", @Value = @Html.DisplayFor(model => model.Address) })
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">Poststed</label>
+                                    
+                                    @Html.TextBoxFor(model => model.PostalAddress.PostalArea, new { @class = "form-control", @id = "firstname", @placeholder = "Skriv inn poststed", @Value = @Html.DisplayFor(model => model.PostalAddress.PostalArea) })
+                                </div>
+                                <div class="form-group">
+                                    <label for="postnr">Postnummer</label>
+                                    
+                                    @Html.TextBoxFor(model => model.PostalAddress.ZipCode, new { @class = "form-control", @id = "firstname", @placeholder = "Skriv inn postnummer", @Value = @Html.DisplayFor(model => model.PostalAddress.ZipCode) })
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="margin-bottom:20px;">Lagre</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>

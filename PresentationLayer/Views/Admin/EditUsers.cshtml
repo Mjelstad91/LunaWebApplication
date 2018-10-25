@@ -1,0 +1,82 @@
+﻿@model List<Model.Models.User>
+
+@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="users">
+	<div class="container-fluid fill">
+		<div class="container">
+			<div class="mypage">
+				<div class="jumbotron mypage-section">
+					<h1 class="mypage-header">Alle brukere</h1>
+					<p>Se og endre alle brukere som ligger i databasen</p>
+				</div>
+				<div class="col-sm-12 mypage-section">
+					<div class="col-xs-6 col-xs-offset-3">
+						<div class="col-xs-4">
+							<a href="/Admin/EditUsers">Vis brukere</a>
+						</div>
+						<div class="col-xs-4">
+							<a href="/Admin/EditMovies">Vis filmer</a>
+						</div>
+						<div class="col-xs-4">
+							<a href="orders.html">Vis ordre</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="container-fluid mypage-section" style="padding-top: 0">
+						<div class="col-xs-8 col-xs-offset-2 customer-table">
+							<table class="table">
+								<thead>
+									<tr style="font-size: 16px">
+										<th scope="col">Bruker ID</th>
+										<th scope="col">Epost</th>
+										<th scope="col">Status</th>
+										<th scope="col" style="text-align: right">
+											<button style="width: 142px" type="submit" class="btn btn-xs btn-success" id="addMovieButton">&nbsp;Legg til ny bruker&nbsp;</button>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									@foreach (var item in Model)
+									{
+										<tr>
+											<th scope="row">@item.UserId</th>
+											<td style="text-align: left">@item.Email</td>
+											<td style="text-align: left">
+												@if (item.AccountStatus == 1)
+												{
+													<p style="color:green">Aktiv</p>
+												}
+												else
+												{
+													<p style="color:red">Deaktivert</p>
+												}
+											<td style="text-align: right">
+
+
+												<button onclick="location.href='@Url.Action("DetailedEditUsers", "Admin", new { userId = item.UserId })'" type="button" class="btn btn-xs btn-primary">Rediger</button>
+
+												<button onclick="location.href='@Url.Action("SetUserStatus", "Admin", new { email = item.Email })'" type="button" class="btn btn-xs btn-danger deleteUser">Endre status</button>
+											</td>
+										</tr>
+									}
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="admin_scripts.js"></script>
+</body>
+
