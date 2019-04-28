@@ -42,7 +42,6 @@ namespace BLL
         }
 
 
-        /******************************************** OBLIGATORISK OPPGAVE 1 ********************************************/
 
         public LunaBLL(IMovieRepository stub)
         {
